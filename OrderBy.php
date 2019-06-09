@@ -2,50 +2,35 @@
 
 function orderBy(array $items, array $sortItems)
 {
-    $order = [];
+    $orders = [];
     foreach ($sortItems as $sortItem) {
-        $order[] = explode(' ', $sortItem);
+        $orders[] = explode(' ', $sortItem);
     }
 
-    $callback = function($first, $second) use($order) {
+    $equal = function ($first, $second, $orders, $max) {
 
-        if ($first[$order[0][0]] == $second[$order[0][0]] &&
-            $first[$order[1][0]] == $second[$order[1][0]] &&
-            $first[$order[2][0]] == $second[$order[2][0]] &&
-            $first[$order[3][0]] == $second[$order[3][0]] &&
-            $first[$order[4][0]] == $second[$order[4][0]]) {
-
-            return $first[$order[5][0]] < $second[$order[5][0]] ? ($order[5][1] === 'desc' ? 1 : -1) : ($order[5][1] === 'desc' ? -1 : 1);
+        for ($i = 0; $i < $max;$i ++) {
+            if ($first[$orders[$i][0]] != $second[$i][0]) {
+                return false;
+            }
         }
 
-        if ($first[$order[0][0]] == $second[$order[0][0]] &&
-            $first[$order[1][0]] == $second[$order[1][0]] &&
-            $first[$order[2][0]] == $second[$order[2][0]] &&
-            $first[$order[3][0]] == $second[$order[3][0]]) {
-            return $first[$order[4][0]] < $second[$order[4][0]] ? ($order[4][1] === 'desc' ? 1 : -1) : ($order[4][1] === 'desc' ? -1 : 1);
-        }
+        return $first[$orders[$max][0]] < $second[$orders[$max][0]] ? ($orders[$max][1] === 'desc' ? 1 : -1) : ($orders[$max][1] === 'desc' ? -1 : 1);
+    };
 
-        if ($first[$order[0][0]] == $second[$order[0][0]] &&
-            $first[$order[1][0]] == $second[$order[1][0]] &&
-            $first[$order[2][0]] == $second[$order[2][0]]) {
-            return $first[$order[3][0]] < $second[$order[3][0]] ? ($order[3][1] === 'desc' ? 1 : -1) : ($order[3][1] === 'desc' ? -1 : 1);
-        }
+    $callback = function($first, $second) use($orders, $equal) {
 
-        if ($first[$order[0][0]] == $second[$order[0][0]] &&
-            $first[$order[1][0]] == $second[$order[1][0]]) {
-            return $first[$order[2][0]] < $second[$order[2][0]] ? ($order[2][1] === 'desc' ? 1 : -1) : ($order[2][1] === 'desc' ? -1 : 1);
-        }
+        for ($i = count($orders) - 1;$i >= 0;$i --) {
 
-        if ($first[$order[0][0]] == $second[$order[0][0]]) {
-            return $first[$order[1][0]] < $second[$order[1][0]] ? ($order[1][1] === 'desc' ? 1 : -1) : ($order[1][1] === 'desc' ? -1 : 1);
-        }
+            $result = $equal($first, $second, $orders, $i);
 
-        return $first[$order[0][0]] < $second[$order[0][0]] ?($order[0][1] === 'desc' ? 1 : -1) : ($order[0][1] === 'desc' ? -1 : 1) ;
+            if ($result !== false) {
+                return $result;
+            }
+        }
     };
 
     $callback ? uasort($items, $callback) : asort($items);
 
     return array_values($items);
 }
-
-
