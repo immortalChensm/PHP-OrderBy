@@ -10,7 +10,7 @@ function orderBy(array $items, array $sortItems)
     $equal = function ($first, $second, $orders, $max) {
 
         for ($i = 0; $i < $max;$i ++) {
-            if ($first[$orders[$i][0]] != $second[$i][0]) {
+            if ($first[$orders[$i][0]] !== $second[$orders[$i][0]]) {
                 return false;
             }
         }
