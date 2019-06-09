@@ -48,19 +48,18 @@ function orderBy(array $items, array $sortItems)
 }
 
 $products = [
-    ['month' => '2017/12/11', 'key1' => 1,  'key2' => 3,  'key3' => 7,  'key4' => 10, 'key5' => 6],
-    ['month' => '2017/12/10', 'key1' => 10, 'key2' => 3,  'key3' => 2,  'key4' => 9,  'key5' => 8],
-    ['month' => '2020/09/13', 'key1' => 2,  'key2' => 10, 'key3' => 3,  'key4' => 8,  'key5' => 7],
-    ['month' => '2022/01/10', 'key1' => 3,  'key2' => 2,  'key3' => 6,  'key4' => 10, 'key5' => 4],
-    ['month' => '2018/04/10', 'key1' => 4,  'key2' => 1,  'key3' => 9,  'key4' => 6,  'key5' => 4],
-    ['month' => '2028/03/10', 'key1' => 1,  'key2' => 1,  'key3' => 5,  'key4' => 3,  'key5' => 10],
-    ['month' => '2018/12/10', 'key1' => 5,  'key2' => 2,  'key3' => 8,  'key4' => 4,  'key5' => 1],
-    ['month' => '2015/09/10', 'key1' => 1,  'key2' => 3,  'key3' => 3,  'key4' => 5,  'key5' => 5],
-    ['month' => '2017/12/10', 'key1' => 10, 'key2' => 1,  'key3' => 7,  'key4' => 4,  'key5' => 3],
-    ['month' => '2017/12/11', 'key1' => 1,  'key2' => 3,  'key3' => 10, 'key4' => 4,  'key5' => 2],
+    ['month' => '2020/01/01', 'key1' => 1, 'key2' => 1, 'key3' => 1, 'key4' => 1, 'key5' => 1, 'id' => 1],
+    ['month' => '2017/01/01', 'key1' => 1, 'key2' => 1, 'key3' => 1, 'key4' => 1, 'key5' => 2, 'id' => 2],
+    ['month' => '2017/01/01', 'key1' => 1, 'key2' => 1, 'key3' => 1, 'key4' => 2, 'key5' => 3, 'id' => 3],
+    ['month' => '2017/01/01', 'key1' => 3, 'key2' => 3, 'key3' => 3, 'key4' => 3, 'key5' => 1, 'id' => 4],
+    ['month' => '2017/01/01', 'key1' => 1, 'key2' => 1, 'key3' => 1, 'key4' => 1, 'key5' => 1, 'id' => 5],
+    ['month' => '2017/01/01', 'key1' => 2, 'key2' => 2, 'key3' => 1, 'key4' => 1, 'key5' => 2, 'id' => 6],
+    ['month' => '2017/01/01', 'key1' => 1, 'key2' => 4, 'key3' => 1, 'key4' => 2, 'key5' => 3, 'id' => 7],
+    ['month' => '2017/01/01', 'key1' => 1, 'key2' => 1, 'key3' => 2, 'key4' => 1, 'key5' => 2, 'id' => 8],
+    ['month' => '2018/01/01', 'key1' => 1, 'key2' => 1, 'key3' => 1, 'key4' => 1, 'key5' => 1, 'id' => 9],
 ];
 
-$sort = ['month', 'key1', 'key2', 'key3', 'key4', 'key5'];
+$sort = ['key1', 'key2'];
 
 $sortedProducts = orderBy($products, $sort);
 
