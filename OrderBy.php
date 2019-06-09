@@ -30,7 +30,7 @@ function orderBy(array $items, array $sortItems)
         }
     };
 
-    $callback ? uasort($items, $callback) : asort($items);
+    uasort($items, $callback);
 
     return array_values($items);
 }
